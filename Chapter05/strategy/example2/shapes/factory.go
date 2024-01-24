@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/sayden/go-design-patterns/behavioral/strategy/example2"
+	strategy "github.com/ibiscum/Go-Design-Patterns/Chapter05/strategy/example2"
 )
 
 const (
@@ -27,6 +27,6 @@ func Factory(s string) (strategy.Output, error) {
 			},
 		}, nil
 	default:
-		return nil, fmt.Errorf("Strategy '%s' not found\n", s)
+		return nil, fmt.Errorf("strategy '%s' not found", s)
 	}
 }

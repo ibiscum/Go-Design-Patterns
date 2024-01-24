@@ -7,7 +7,7 @@ import (
 	"image/draw"
 	"image/jpeg"
 
-	"github.com/sayden/go-design-patterns/behavioral/strategy/example2"
+	strategy "github.com/ibiscum/Go-Design-Patterns/Chapter05/strategy/example2"
 )
 
 type ImageSquare struct {
@@ -42,10 +42,10 @@ func (i *ImageSquare) Draw() error {
 	draw.Draw(bgRectangle, squareImg.Bounds(), &squareColor, origin, draw.Src)
 
 	if i.Writer == nil {
-		return fmt.Errorf("No writer stored on ImageSquare")
+		return fmt.Errorf("no writer stored on ImageSquare")
 	}
 	if err := jpeg.Encode(i.Writer, bgRectangle, quality); err != nil {
-		return fmt.Errorf("Error writing image to disk")
+		return fmt.Errorf("error writing image to disk")
 	}
 
 	if i.LogWriter != nil {

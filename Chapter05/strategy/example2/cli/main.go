@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/sayden/go-design-patterns/behavioral/strategy/example2/shapes"
+	"github.com/ibiscum/Go-Design-Patterns/Chapter05/strategy/example2/shapes"
 )
 
 var output = flag.String("output", "text", "The output to use between "+

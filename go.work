@@ -2,7 +2,10 @@ go 1.21.6
 
 use (
 	./Chapter01
+    ./Chapter01/libraries/arithmetic
 	./Chapter02
+    ./Chapter02/abstract_factory
+    ./Chapter02/creational
 	./Chapter03
 	./Chapter04
 	./Chapter05
