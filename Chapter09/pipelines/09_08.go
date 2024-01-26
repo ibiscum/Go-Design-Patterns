@@ -1,7 +1,5 @@
 package pipelines
 
-import "testing"
-
 func generator(max int) <-chan int {
 	outChInt := make(chan int, 100)
 
@@ -46,7 +44,7 @@ func sum(in <-chan int) <-chan int {
 	return out
 }
 
-Finally, we can implement the LaunchPipeline function:
+// Finally, we can implement the LaunchPipeline function:
 func LaunchPipeline(amount int) int {
 	firstCh := generator(amount)
 	secondCh := power(firstCh)

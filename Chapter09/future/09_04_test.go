@@ -1,13 +1,13 @@
 package future
 
 import (
-	"errors"
+	"fmt"
 	"testing"
-	"sync"
 )
 
 func TestStringOrError_Execute(t *testing.T) {
 	future := &MaybeString{}
+	fmt.Println(future)
 
 	t.Run("Success result", func(t *testing.T) {
 

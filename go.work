@@ -12,5 +12,6 @@ use (
 	./Chapter06
 	./Chapter07
 	./Chapter09
+    ./Chapter09/barrier
 	./Chapter10
 )
