@@ -1,4 +1,4 @@
-go 1.21.6
+go 1.20
 
 use (
 	./Chapter01
@@ -11,6 +11,7 @@ use (
 	./Chapter05
 	./Chapter06
 	./Chapter07
+    ./Chapter08
 	./Chapter09
     ./Chapter09/barrier
 	./Chapter10
