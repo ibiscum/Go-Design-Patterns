@@ -1,26 +1,25 @@
 package creational
 
 import (
-	"errors"
 	"fmt"
 )
 
-//PaymentMethod defines a way of paying in the shop. This factory method returns
-//objects that implements this interface
+// PaymentMethod defines a way of paying in the shop. This factory method returns
+// objects that implements this interface
 type PaymentMethod interface {
 	Pay(amount float32) string
 }
 
-//Our current implemented Payment methods are described here
+// Our current implemented Payment methods are described here
 const (
 	Cash      = 1
 	DebitCard = 2
 )
 
-//CreatePaymentMethod returns a pointer to a PaymentMethod object or an error
-//if the method is not registered. We used "new" operator to return the pointer
-//but we could also used &Type{} althought new makes it more readable for
-//newcomers could be confusing
+// CreatePaymentMethod returns a pointer to a PaymentMethod object or an error
+// if the method is not registered. We used "new" operator to return the pointer
+// but we could also used &Type{} althought new makes it more readable for
+// newcomers could be confusing
 func GetPaymentMethod(m int) (PaymentMethod, error) {
 	switch m {
 	case Cash:
@@ -28,7 +27,7 @@ func GetPaymentMethod(m int) (PaymentMethod, error) {
 	case DebitCard:
 		return new(NewDebitCardPM), nil
 	default:
-		return nil, errors.New(fmt.Sprintf("Payment method %d not recognized\n", m))
+		return nil, fmt.Errorf("payment method %d not recognized", m)
 	}
 }
 

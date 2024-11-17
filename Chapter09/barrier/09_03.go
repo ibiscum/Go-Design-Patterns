@@ -5,38 +5,25 @@ package barrier
 // "net/http"
 // "time"
 
-var timeoutMilliseconds int = 5000
+// var timeoutMilliseconds int = 5000
 
-func barrier(endpoints ...string) {
-	//requestNumber := len(endpoints)
+// var hasError bool
+// for i := 0; i < requestNumber; i++ {
+// 	resp := <-in
+// 	if resp.Err != nil {
+// 		fmt.Println("ERROR: ", resp.Err)
+// 		hasError = true
+// 		break
+// 	}
+// 	responses[i] = resp
+// }
 
-	//in := make(chan barrierResp, requestNumber)
-	//defer close(in)
-
-	//responses := make([]barrierResp, requestNumber)
-
-	// for _, endpoint := range endpoints {
-	// 	//go makeRequest(in, endpoint)
-
-	// }
-
-	// var hasError bool
-	// for i := 0; i < requestNumber; i++ {
-	// 	resp := <-in
-	// 	if resp.Err != nil {
-	// 		fmt.Println("ERROR: ", resp.Err)
-	// 		hasError = true
-	// 		break
-	// 	}
-	// 	responses[i] = resp
-	// }
-
-	// if !hasError {
-	// 	for _, resp := range responses {
-	// 		fmt.Println(resp.Resp)
-	// 	}
-	// }
-}
+// if !hasError {
+// 	for _, resp := range responses {
+// 		fmt.Println(resp.Resp)
+// 	}
+// }
+// }
 
 // func makeRequest(out chan<- barrierResp, url string) {
 // 	res := barrierResp{}

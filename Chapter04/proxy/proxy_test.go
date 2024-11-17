@@ -8,7 +8,7 @@ import (
 func Test_UserListProxy(t *testing.T) {
 	mockedDatabase := UserList{}
 
-	rand.Seed(2342342)
+	// rand.Seed(2342342)
 	for i := 0; i < 1000000; i++ {
 		n := rand.Int31()
 		mockedDatabase = append(mockedDatabase, User{ID: n})

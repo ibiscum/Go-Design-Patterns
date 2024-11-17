@@ -68,7 +68,7 @@ func TestDivide(t *testing.T) {
 
 	//Test a division by zero that must return an error
 	b = 0
-	res, err = Divide(a, b)
+	_, err = Divide(a, b)
 	if err == nil {
 		t.Error("No error returned after passed 0 as divisor")
 	}

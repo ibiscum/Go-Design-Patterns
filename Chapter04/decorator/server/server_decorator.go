@@ -56,7 +56,10 @@ func main() {
 	fmt.Println("3.- Server with logging and authentication")
 
 	var selection int
-	fmt.Fscanf(os.Stdin, "%d", &selection)
+	_, err := fmt.Fscanf(os.Stdin, "%d", &selection)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	var mySuperServer http.Handler
 
@@ -72,7 +75,10 @@ func main() {
 		var user, password string
 
 		fmt.Println("Enter user and password separated by a space")
-		fmt.Fscanf(os.Stdin, "%s %s", &user, &password)
+		_, err := fmt.Fscanf(os.Stdin, "%s %s", &user, &password)
+		if err != nil {
+			log.Fatal(err)
+		}
 
 		mySuperServer = &LoggerMiddleware{
 			Handler: &SimpleAuthMiddleware{

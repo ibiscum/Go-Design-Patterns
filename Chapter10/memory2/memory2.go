@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	_ "net/http/pprof"
 	// "strings"
 )
@@ -13,6 +14,7 @@ type Request struct {
 }
 
 func (w *PreffixSuffixWorker) uppercase(in <-chan Request) <-chan Request {
+	log.Printf("in: %#v", in)
 	out := make(chan Request)
 	go func() {
 		// for msg := range in {
@@ -30,4 +32,11 @@ func (w *PreffixSuffixWorker) uppercase(in <-chan Request) <-chan Request {
 		// close(out)
 	}()
 	return out
+}
+
+func main() {
+	in := make(chan Request)
+	var w PreffixSuffixWorker
+	out := w.uppercase(in)
+	log.Printf("out: %#v", out)
 }

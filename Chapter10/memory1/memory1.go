@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	_ "net/http/pprof"
 	"os"
 	"runtime"
@@ -26,7 +27,10 @@ func main() {
 
 	for {
 		input := new(string)
-		fmt.Fscanf(os.Stdin, "%s\n", input)
+		_, err := fmt.Fscanf(os.Stdin, "%s\n", input)
+		if err != nil {
+			log.Fatal(err)
+		}
 		switch *input {
 		case "add":
 			createNew()

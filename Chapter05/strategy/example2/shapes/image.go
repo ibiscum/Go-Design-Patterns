@@ -6,6 +6,7 @@ import (
 	"image/color"
 	"image/draw"
 	"image/jpeg"
+	"log"
 
 	strategy "github.com/ibiscum/Go-Design-Patterns/Chapter05/strategy/example2"
 )
@@ -49,7 +50,10 @@ func (i *ImageSquare) Draw() error {
 	}
 
 	if i.LogWriter != nil {
-		i.LogWriter.Write([]byte("Image written in provided writer\n"))
+		_, err := i.LogWriter.Write([]byte("Image written in provided writer\n"))
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	return nil

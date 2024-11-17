@@ -1,6 +1,9 @@
 package composition
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestAthlete_Train(t *testing.T) {
 	athlete := Athlete{}
@@ -50,5 +53,6 @@ func TestTree(t *testing.T) {
 
 func TestSon_GetParentField(t *testing.T) {
 	son := Son{}
-	GetParentField(son.P)
+	level := GetParentField(son.P)
+	fmt.Print(level)
 }

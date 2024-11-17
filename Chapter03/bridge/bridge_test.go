@@ -67,7 +67,7 @@ func TestNormalPrinter_Print(t *testing.T) {
 
 	err := normal.Print()
 	if err != nil {
-		t.Errorf(err.Error())
+		t.Error(err.Error())
 	}
 
 	testWriter := TestWriter{}
@@ -99,7 +99,7 @@ func TestPacktPrinter_Print(t *testing.T) {
 
 	err := packt.Print()
 	if err != nil {
-		t.Errorf(err.Error())
+		t.Error(err.Error())
 	}
 
 	testWriter := TestWriter{}

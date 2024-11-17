@@ -1,8 +1,8 @@
 package main
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
 type Command interface {
@@ -24,11 +24,9 @@ func (h HelloMessage) Info() string {
 }
 
 func main() {
-	var timeCommand Command
-	timeCommand = &TimePassed{time.Now()}
+	var timeCommand Command = &TimePassed{time.Now()}
 
-	var helloCommand Command
-	helloCommand = &HelloMessage{}
+	var helloCommand Command = &HelloMessage{}
 
 	time.Sleep(time.Second)
 

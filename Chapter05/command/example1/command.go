@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -52,5 +53,8 @@ func main() {
 	queue.AddCommand(CreateCommand("Fifth message"))
 
 	client := http.Client{}
-	client.Do(nil)
+	_, err := client.Do(nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

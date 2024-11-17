@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 )
 
@@ -66,18 +65,20 @@ const (
 	weatherByGeographicalCoordinates = commonRequestPrefix + "weather?lat=%f&lon=%f&APPID=%s"
 )
 
-//GetByGeoCoordinates returns the current weather data by passing a geographical
-//coordinates (latitude and longitude) in decimal notation. It returns weather
-//information or a detailed error.
-//For example, to query about Madrid, Spain you do:
+// GetByGeoCoordinates returns the current weather data by passing a geographical
+// coordinates (latitude and longitude) in decimal notation. It returns weather
+// information or a detailed error.
+// For example, to query about Madrid, Spain you do:
+//
 //	currentWeather.GetByGeoCoordinates(-3, 40)
 func (c *CurrentWeatherData) GetByGeoCoordinates(lat, lon float32) (weather *Weather, err error) {
 	return c.doRequest(fmt.Sprintf(weatherByGeographicalCoordinates, lat, lon, c.APIkey))
 }
 
-//GetByCityAndCountryCode returns the current weather data by passing a city name
-//and an ISO country code. It returns weather information or a detailed error
-//For example, to query about Madrid, Spain you do:
+// GetByCityAndCountryCode returns the current weather data by passing a city name
+// and an ISO country code. It returns weather information or a detailed error
+// For example, to query about Madrid, Spain you do:
+//
 //	currentWeather.GetByCityAndCountryCode("Madrid", "ES)
 func (c *CurrentWeatherData) GetByCityAndCountryCode(city, countryCode string) (weather *Weather, err error) {
 	return c.doRequest(fmt.Sprintf(weatherByCityName, city, countryCode, c.APIkey))
@@ -107,12 +108,12 @@ func (o *CurrentWeatherData) doRequest(uri string) (weather *Weather, err error)
 	}
 
 	if resp.StatusCode != 200 {
-		byt, errMsg := ioutil.ReadAll(resp.Body)
+		byt, errMsg := io.ReadAll(resp.Body)
 		defer resp.Body.Close()
 		if errMsg == nil {
 			errMsg = fmt.Errorf("%s", string(byt))
 		}
-		err = fmt.Errorf("Status code was %d, aborting. Error message was:\n%s\n",
+		err = fmt.Errorf("status code was %d, aborting. error message was: %s",
 			resp.StatusCode, errMsg)
 
 		return

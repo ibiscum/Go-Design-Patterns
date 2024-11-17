@@ -1,7 +1,6 @@
 package abstract_factory
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -19,6 +18,6 @@ func (m *MotorbikeFactory) GetVehicle(v int) (Vehicle, error) {
 	case CruiseMotorbikeType:
 		return new(CruiseMotorbike), nil
 	default:
-		return nil, errors.New(fmt.Sprintf("Vehicle of type %d not recognized\n", v))
+		return nil, fmt.Errorf("vehicle of type %d not recognized", v)
 	}
 }

@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 )
 
 //-----------------------------------------------------------------
@@ -48,7 +49,10 @@ type NormalPrinter struct {
 }
 
 func (c *NormalPrinter) Print() error {
-	c.Printer.PrintMessage(c.Msg)
+	err := c.Printer.PrintMessage(c.Msg)
+	if err != nil {
+		log.Fatal(err)
+	}
 	return nil
 }
 
@@ -60,6 +64,9 @@ type PacktPrinter struct {
 }
 
 func (c *PacktPrinter) Print() error {
-	c.Printer.PrintMessage(fmt.Sprintf("Message from Packt: %s", c.Msg))
+	err := c.Printer.PrintMessage(fmt.Sprintf("Message from Packt: %s", c.Msg))
+	if err != nil {
+		log.Fatal(err)
+	}
 	return nil
 }

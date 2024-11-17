@@ -35,6 +35,8 @@ func TestMotorbikeFactory(t *testing.T) {
 	t.Logf("Cruise motorbike has type %d\n", cruiseBike.GetType())
 
 	motorbikeVehicle, err = motorbikeF.GetVehicle(3)
+	t.Logf("motirbike vehicle: %#v", motorbikeVehicle)
+
 	if err == nil {
 		t.Fatal("Motorbike of type 3 should not be recognized")
 	}
@@ -42,6 +44,7 @@ func TestMotorbikeFactory(t *testing.T) {
 
 func TestCarFactory(t *testing.T) {
 	carF, err := GetVehicleFactory(3)
+	t.Logf("car factory: %#v", carF)
 	if err == nil {
 		t.Fatal("Car factory with id 3 should not be recognized")
 	}
@@ -78,6 +81,7 @@ func TestCarFactory(t *testing.T) {
 	t.Logf("Familiar car has %d doors.\n", familiarCar.GetDoors())
 
 	carVehicle, err = carF.GetVehicle(3)
+	t.Logf("car vehicle: %#v", carVehicle)
 	if err == nil {
 		t.Fatal("Car of type 3 should not be recognized")
 	}
