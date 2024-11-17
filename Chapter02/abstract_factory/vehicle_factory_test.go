@@ -67,18 +67,18 @@ func TestCarFactory(t *testing.T) {
 	}
 	t.Logf("Luxury car has %d doors.\n", luxuryCar.GetDoors())
 
-	carVehicle, err = carF.GetVehicle(FamiliarCarType)
+	carVehicle, err = carF.GetVehicle(FamilyCarType)
 	if err != nil {
 		t.Fatal(err)
 	}
 
 	t.Logf("Car vehicle has %d seats\n", carVehicle.GetWheels())
 
-	familiarCar, ok := carVehicle.(Car)
+	FamilyCar, ok := carVehicle.(Car)
 	if !ok {
 		t.Fatal("Struct assertion has failed")
 	}
-	t.Logf("Familiar car has %d doors.\n", familiarCar.GetDoors())
+	t.Logf("Familiar car has %d doors.\n", FamilyCar.GetDoors())
 
 	carVehicle, err = carF.GetVehicle(3)
 	t.Logf("car vehicle: %#v", carVehicle)
