@@ -1,4 +1,9 @@
 # Go Design Patterns
+[![build](https://github.com/ibiscum/Go-Design-Patterns/actions/workflows/build.yml/badge.svg)](https://github.com/ibiscum/Go-Design-Patterns/actions/workflows/build.yml)
+[![lint](https://github.com/ibiscum/Go-Design-Patterns/actions/workflows/lint.yml/badge.svg)](https://github.com/ibiscum/Go-Design-Patterns/actions/workflows/lint.yml)
+[![test](https://github.com/ibiscum/Go-Design-Patterns/actions/workflows/test.yml/badge.svg)](https://github.com/ibiscum/Go-Design-Patterns/actions/workflows/test.yml)
+[![coverage](https://github.com/ibiscum/Go-Design-Patterns/actions/workflows/coverage.yml/badge.svg)](https://github.com/ibiscum/Go-Design-Patterns/actions/workflows/coverage.yml)
+
 This is the code repository for [Go Design Patterns](https://www.packtpub.com/en-us/product/go-design-patterns-9781786461902), published by [Packt](https://www.packtpub.com/en-us). It contains all the supporting project files necessary to work through the book from start to finish.
 
 ## About the Book
