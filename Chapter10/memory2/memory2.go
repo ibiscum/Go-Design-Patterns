@@ -2,25 +2,32 @@ package main
 
 import (
 	_ "net/http/pprof"
-	"strings"
+	// "strings"
 )
+
+type PreffixSuffixWorker struct {
+}
+
+type Request struct {
+	Data string
+}
 
 func (w *PreffixSuffixWorker) uppercase(in <-chan Request) <-chan Request {
 	out := make(chan Request)
 	go func() {
-		for msg := range in {
-			s, ok := msg.Data.(string)
+		// for msg := range in {
+		// 	s, ok := msg.Data.(string)
 
-			if !ok {
-				msg.handler(nil)
-				continue
-			}
+		// 	if !ok {
+		// 		msg.handler(nil)
+		// 		continue
+		// 	}
 
-			msg.Data = strings.ToUpper(s)
+		// 	msg.Data = strings.ToUpper(s)
 
-			out <- msg
-		}
-		close(out)
+		// 	out <- msg
+		// }
+		// close(out)
 	}()
 	return out
 }

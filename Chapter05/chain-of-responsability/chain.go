@@ -3,6 +3,7 @@ package chain_of_responsability
 import (
 	"fmt"
 	"io"
+	"log"
 	"strings"
 )
 
@@ -47,7 +48,10 @@ type WriterLogger struct {
 
 func (w *WriterLogger) Next(s string) {
 	if w.Writer != nil {
-		w.Writer.Write([]byte("WriterLogger: " + s))
+		_, err := w.Writer.Write([]byte("WriterLogger: " + s))
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	if w.NextChain != nil {

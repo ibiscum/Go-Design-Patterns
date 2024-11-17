@@ -24,5 +24,5 @@ func TestStartInstance(t *testing.T) {
 		val = singleton.GetCount()
 		time.Sleep(10 * time.Millisecond)
 	}
-	singleton.Stop()
+	// singleton.Stop()
 }

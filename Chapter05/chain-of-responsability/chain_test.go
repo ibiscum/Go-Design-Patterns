@@ -2,6 +2,7 @@ package chain_of_responsability
 
 import (
 	"fmt"
+	"log"
 	"strings"
 	"testing"
 )
@@ -17,7 +18,10 @@ func (m *myTestWriter) Write(p []byte) (int, error) {
 }
 
 func (m *myTestWriter) Next(s string) {
-	m.Write([]byte(s))
+	_, err := m.Write([]byte(s))
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func TestCreateDefaultChain(t *testing.T) {

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"reflect"
 	"strconv"
@@ -28,6 +29,10 @@ func TryFunc(d DoerFunc) {
 }
 
 func main() {
+	pipe1()
+	pipe2()
+	movePointers()
+	compositionIsNotInheritance()
 	testSuperAdapter()
 }
 
@@ -48,7 +53,10 @@ func pipe2() {
 
 	tee := io.TeeReader(pipeReader, file)
 	go func() {
-		io.Copy(os.Stdout, tee)
+		_, err := io.Copy(os.Stdout, tee)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}()
 
 	counter.Count(5)
@@ -75,7 +83,7 @@ func compositionIsNotInheritance() {
 }
 
 func composite(m *MyObject) {
-	println("hello")
+	log.Printf("hello: %#v", m)
 }
 
 func pipe1() {
@@ -84,7 +92,10 @@ func pipe1() {
 	defer file1.Close()
 
 	destinationBytes := make([]byte, 7)
-	file1.Read(destinationBytes)
+	_, err := file1.Read(destinationBytes)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	fmt.Printf("%s\n", string(destinationBytes))
 
@@ -98,7 +109,10 @@ func pipe1() {
 
 	go func(pr io.Reader) {
 		tee := io.TeeReader(pr, file1)
-		io.Copy(os.Stdout, tee)
+		_, err := io.Copy(os.Stdout, tee)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}(pr)
 
 	counter.Count(5)
@@ -123,19 +137,25 @@ func (f *Counter) Counter2(n uint64) uint64 {
 
 func (f *Counter) Count(n uint64) uint64 {
 	if n == 0 {
-		f.Writer.Write([]byte(strconv.Itoa(0) + "\n"))
+		_, err := f.Writer.Write([]byte(strconv.Itoa(0) + "\n"))
+		if err != nil {
+			log.Fatal(err)
+		}
 		return 0
 	}
 
 	cur := n
-	f.Writer.Write([]byte(strconv.FormatUint(cur, 10) + "\n"))
+	_, err := f.Writer.Write([]byte(strconv.FormatUint(cur, 10) + "\n"))
+	if err != nil {
+		log.Fatal(err)
+	}
 	return f.Count(n - 1)
 }
 
 type MockReader struct{}
 
 func (m *MockReader) Read(p []byte) (n int, err error) {
-	p = []byte("mario")
+	// p = []byte("mario")
 	return len(p), nil
 }
 
@@ -151,6 +171,13 @@ type SuperAdapter struct {
 
 func (s *SuperAdapter) test() {
 	var b []byte
-	s.Reader.Read(b)
-	s.Writer.Write(b)
+	_, err := s.Reader.Read(b)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	_, err = s.Writer.Write(b)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
