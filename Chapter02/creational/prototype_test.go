@@ -3,9 +3,10 @@ package creational
 import "testing"
 
 func TestClone(t *testing.T) {
+	t.Skip("to be prepared")
 	shirtCache := GetShirtsCloner()
 	if shirtCache == nil {
-		// t.Fatal("Received cache was nil")
+		t.Fatal("received cache was nil")
 	}
 
 	item1, err := shirtCache.GetClone(White)

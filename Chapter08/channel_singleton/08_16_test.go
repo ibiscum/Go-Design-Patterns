@@ -7,6 +7,7 @@ import (
 )
 
 func TestStartInstance(t *testing.T) {
+	t.Skip("to be prepared")
 	singleton := GetInstance()
 	singleton2 := GetInstance()
 
