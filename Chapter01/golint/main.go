@@ -6,10 +6,10 @@ import (
 )
 
 func main() {
-	//Explicitly declaring a "string" variable
+	// Explicitly declaring a "string" variable
 	var explicitString string = "Hello World!"
 
-	//Implicitly declaring a "string"
+	// Implicitly declaring a "string"
 	implicitString := "Hello World!"
 
 	println(explicitString)
